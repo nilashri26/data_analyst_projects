@@ -2,22 +2,30 @@ select*from dataset1;
 select*from dataset2;
 select count(*) from dataset1;
 select count(*) from dataset2;
+
+
 #dataset for maharashtra#
 select*from dataset1 where state="maharashtra";
 #population in india#
 select sum(population) as sum_of_population from dataset2;
+
 #avg growth#
 select state,avg(growth) as avg_growth_pct from dataset1 group by State;
+
 #avg sex ratio#
 select state,round(avg(sex_ratio),0) as avg_sex_ratio from dataset1 group by state order by avg_sex_ratio desc;
 #avg literacy rate#
+
 select state,round(avg(literacy),0) as avg_literacy_ratio from dataset1 
 group by state having round(avg(literacy),0)>90 order by round(avg(literacy),0) desc;
+
 #top 3 states showing highest growth rate#
 
 select state,avg(growth)*100 as avg_growth from dataset1 group by state order by avg_growth desc limit 3;
+
 #bottom 3 states showing highest growth rate#
 select state,round(avg(growth),0)*100 as avg_growth from dataset1 group by state order by avg_growth asc limit 3;
+
 #bottom 3 state showing lowest sex ratio#
 select state, round(avg(sex_ratio),0) as avg_sex_ratio from dataset1 group by state order by avg_sex_ratio asc limit 3;
 
